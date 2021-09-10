@@ -63,15 +63,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Create a new angular project
 
-`ng new project-name` or `npx ng new project-name`
-`ng new project-name --no-strict` or `npx ng new project-name --no-strict`
+`ng new project-name` or
+`npx ng new project-name`
+
+`ng new project-name --no-strict` or
+`npx ng new project-name --no-strict`
 
 ## Create a component in CLI
 
-`ng generate compnent component_name` or
+`ng generate compnent component_name` or  
 `ng g c component_name`or
 `ng g c component_name --spec false` or
 `ng g c component_name --skip-tests=true`
+
+## Attribute vs Property
+
+![attr vs prop](./src/assets/attribute_vs_property.png)
 
 ## Databinding
 
@@ -128,6 +135,11 @@ Attribute directives are able to change the behavior of DOM. The directive NgSty
 2. Directives - Custom properties & Events
 3. Components - Custom properties & Events
 
+```html
+@input // to send data from Parent to Child @Output // to send data from Child
+to Parent
+```
+
 ```js
 @Input('Alias') propertyName = value; //to get the property accessible outside of component
 @Output('Alias') eventName = new EventEmitter<{type}>(); //to make event listen to changes outside of component
@@ -165,7 +177,57 @@ Angular assigns a template variable a value **based on where you declare the var
 3. If you declare the variable on an <ng-template> element, the variable refers to a TemplateRef instance, which represents the template. For more information on <ng-template>, see How Angular uses the asterisk, \*, syntax in Structural directives.
 4. If the variable specifies a name on the right-hand side, such as #var="ngModel", the variable refers to the directive or component on the element with a matching exportAs name.
 
-## Hierarchial Injector
+## Pipes
+
+```html
+<!-- String -->
+<h2>name</h2>
+<h2>{{name | lowercase}}</h2>
+<h2>{{name | uppercase}}</h2>
+<h2>{{name | titlecase}}</h2>
+<h2>{{name | slice:3:5}}</h2>
+<h2>{{objectname | json}}</h2>
+<!-- Number -->
+<h2>{{5.678 | number:'1.2-5'}}</h2>
+<h2>{{5.678 | number:'3.4-5'}}</h2>
+<h2>{{5.678 | number:'3.1-2'}}</h2>
+<h2>{{0.25 | percent}}</h2>
+<h2>{{0.25 | currency}}</h2>
+<h2>{{0.25 | currency : 'GBP'}}</h2>
+<h2>{{0.25 | currency : 'GBP' : 'code'}}</h2>
+<!-- Date -->
+<h2>{{date}}</h2>
+<h2>{{date | date:'short'}}</h2>
+<h2>{{date | date:'shortDate'}}</h2>
+<h2>{{date | date:'shortTime'}}</h2>
+<h2>{{date | date:'mediumTime'}}</h2>
+<h2>{{date | date:'mediumDate'}}</h2>
+<h2>{{date | date:'LongTime'}}</h2>
+<h2>{{date | date:'LongDate'}}</h2>
+```
+
+## Services
+
+A class with specific purpose
+
+1. Share data
+2. Implement application logic
+3. External Interaction
+
+Naming Convention - \*.service.ts
+`npx ng g s servicename`
+Eg:- `npx ng g s employee` This will create **employee.service.ts** file
+
+## Dependency Injection
+
+1. DI is design pattern in which a class receives its dependencies from external sources rather than creating them itself
+   ![DI](./src/assets/dependencyInjection.png)
+2. DI as a framework
+   - Define the service class (Creating the class)
+   - Register with Injector (Refering the class in Providers in high level (AppModule) to make it accessible application wide)
+   - Declare as dependency in required components/services (refer it in constructor to get the instance of the service, assign the dependency in **ngOnInit** lifecycle, use @Injectable while refering a service inside of another service)
+
+## Hierarchical Injector
 
 1. AppModule - Same instance of service available Application-wide
 2. AppComponent - Same instance of service available for all components (but not for other services)
