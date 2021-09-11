@@ -170,3 +170,113 @@ Angular assigns a template variable a value **based on where you declare the var
 1. AppModule - Same instance of service available Application-wide
 2. AppComponent - Same instance of service available for all components (but not for other services)
 3. Any Other Component - Same instance of service available for the component and all its child components
+
+## Observables
+
+A sequence of items that arrive asynchronously over time
+
+HTTP call - single item (HTTPS response)
+
+## HTTP, Observables and RxJS
+
+1. HTTPS Get request from EmpService
+
+**In app.module.ts**, import the module & add it to imports array
+
+```js
+// FILE : app.module.ts
+import { HttpClientModule } from "@angular/common/http";
+
+@NgModule({
+  declarations:[],
+  imports:[HttpClientModule],
+  providers:[*Service],
+  bootstrap:[AppComponent]
+})
+```
+
+**In \*.service.ts**, declare as dependency in constructor & import **HttpClient**
+Then make a request in \*.service.ts file
+
+```js
+@Injectable()
+export class *Service {
+  constructor(private http:HttpClient){}
+  getData() {
+    return this.http.get('server-url_OR_some-file-path');
+  }
+}
+```
+
+2. Receive the observable and cast it into an employee array
+
+Create a interface in app folder, **employee.ts**
+
+```js
+export interface IEmployee {
+  id: number;
+  name: string;
+  age: number;
+}
+```
+
+Import the interface in \*.service.ts & update the get function
+
+```js
+import {Observable} from 'rxjs/Observable';
+import { IEmployee } from "./employee";
+
+getData():Observable<IEmployee> {
+    return this.http.get<IEmployee[]>('server-url_OR_some-file-path');
+  }
+```
+
+3. Subscribe to the observable from EmpList & EmpDetail
+
+In the component, we need the data, use the service & call the function **getEmployee** under **ngOnInit** to assign it to an array
+
+```js
+ngOnInit() {
+  this._employeeService.getData().subscribe(data => this.employees = data);
+}
+```
+
+4. Assign the employee array to a local variable
+
+**RxJS**
+
+- Reactive extensions for JS
+- External library to work with observables
+
+## Error Handling in HTTP
+
+Use a catch statement with a function to display the error in view
+
+```js
+  import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+  import {Observable} from 'rxjs/Observable';
+  import 'rxjs/add/operator/catch';
+  import 'rxjs/add/observable.throw';
+
+  import { IEmployee } from "./employee";
+  getData():Observable<IEmployee> {
+      return this.http
+      .get<IEmployee[]>('server-url_OR_some-file-path')
+      .catch(this.errorHandler);
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || 'Server Error');
+  }
+```
+
+Similarly, use the return data & check whether error is there in the response from subscribe
+
+```js
+ngOnInit() {
+  this._employeeService
+  .getData()
+  .subscribe(data => this.employees = data, 
+             error => this.errorMsg = error);
+}
+```
