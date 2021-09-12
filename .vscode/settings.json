@@ -1,3 +1,6 @@
 {
-  "conventionalCommits.scopes": ["Init angular application for recipe app"]
+  "conventionalCommits.scopes": [
+    "Init angular application for recipe app",
+    "README"
+  ]
 }
