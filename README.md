@@ -53,6 +53,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![Architecture of angular](./src/assets/architecture.png)
 
+## Angular CLI
+
+![Angular CLI](./../src/assets/angular-cli.png)
 ## Installation
 
 `npm i -g @angular/cli`
