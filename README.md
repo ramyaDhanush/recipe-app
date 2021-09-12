@@ -47,15 +47,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Opt-in usage sharing
 - Has dependency updates
 - Provides Web Worker bundling
-  ![Modules](./src/assets/modules.png)
+
 
 ## Architecture
 
 ![Architecture of angular](./src/assets/architecture.png)
 
+## Components & Modules
+
+![Modules](./src/assets/modules.png)
+
+![com&mod](./src/assets/components_&_modules.png)
+
+![components_code](./src/assets/component_code.png)
 ## Angular CLI
 
-![Angular CLI](./../src/assets/angular-cli.png)
+![Angular CLI](./src/assets/angular-cli.png)
 ## Installation
 
 `npm i -g @angular/cli`
