@@ -48,7 +48,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - Has dependency updates
 - Provides Web Worker bundling
 
-
 ## Architecture
 
 ![Architecture of angular](./src/assets/architecture.png)
@@ -60,9 +59,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ![com&mod](./src/assets/components_&_modules.png)
 
 ![components_code](./src/assets/component_code.png)
+
 ## Angular CLI
 
 ![Angular CLI](./src/assets/angular-cli.png)
+
 ## Installation
 
 `npm i -g @angular/cli`
@@ -89,6 +90,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 Typescript      ------> Template
 (BusinessLogic) <------ (HTML)
 ```
+
+![Data Binding](./src/assets/data_binding.png)
 
 **Output Data**
 
@@ -132,6 +135,8 @@ Attribute directives are able to change the behavior of DOM. The directive NgSty
 <app-server *ngFor="let server of servers"></app-server>
 ```
 
+![Directive](./src/assets/buildin-directives.png)
+
 ## Property & Event Binding
 
 1. HTML elements - Native properties & Events
@@ -142,6 +147,8 @@ Attribute directives are able to change the behavior of DOM. The directive NgSty
 @Input('Alias') propertyName = value; //to get the property accessible outside of component
 @Output('Alias') eventName = new EventEmitter<{type}>(); //to make event listen to changes outside of component
 ```
+
+![Data Binding](./src/assets/data_binding_depth.png)
 
 ## View Encapsulation
 
@@ -286,7 +293,8 @@ Similarly, use the return data & check whether error is there in the response fr
 ngOnInit() {
   this._employeeService
   .getData()
-  .subscribe(data => this.employees = data, 
+  .subscribe(data => this.employees = data,
              error => this.errorMsg = error);
 }
 ```
+
