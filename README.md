@@ -243,7 +243,7 @@ Import the interface in \*.service.ts & update the get function
 import {Observable} from 'rxjs/Observable';
 import { IEmployee } from "./employee";
 
-getData():Observable<IEmployee> {
+getData():Observable<IEmployee[]> {
     return this.http.get<IEmployee[]>('server-url_OR_some-file-path');
   }
 ```
@@ -298,3 +298,33 @@ ngOnInit() {
 }
 ```
 
+![HTTP Mechanism](./src/assets/http_mechanism.png)
+
+## Angular Forms
+
+![Anuglar Forms](./src/assets/angular_forms.png)
+
+![Track control state & validity](./src/assets/form_track_control_state_&_validity.png)
+
+![Ngmodel-properties](./src/assets/ng_model_properties.png)
+
+**Two Approaches**
+
+1. Template Driven Forms - Heavy on component template
+   **Pros**
+
+   - Easy to use & similar to Angular JS forms
+   - Two way data binding with ngModel
+   - Bulky HTML & minimal component code
+   - Automatically tracks the form & form elements state & validity
+
+   **Cons**
+
+   - Unit testing is challenge
+   - Readability decreses with comples forms and validations
+
+   **When to choose**
+
+   - Suitable for simple scenarios
+
+2. Reactive Forms - Heavy on component class
