@@ -56,7 +56,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Create a new angular project
 
-`ng new project-name` or `npx ng new project-name`
+`ng new project-name` or `npx ng new project-name`  
 `ng new project-name --no-strict` or `npx ng new project-name --no-strict`
 
 ## Create a component in CLI
