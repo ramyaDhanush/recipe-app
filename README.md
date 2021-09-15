@@ -6,7 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-
 # Angular Learnings
 
 ## Introduction
@@ -30,6 +29,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Architecture
 
 ![Architecture of angular](./src/assets/architecture.png)
+
+## Building Blocks
+
+![Building Blocks](./src/assets/building_blocks.png)
 
 ## Components & Modules
 
@@ -306,4 +309,23 @@ ngOnInit() {
 
    - Suitable for simple scenarios
 
-2. Reactive Forms - Heavy on component class
+   ![Steps](./src/assets/form_template_steps.png)
+
+2. Reactive Forms - Heavy on component class  
+   `FormGroup` & `FormControl` are building blocks of reactive forms
+
+   **Pros**
+
+   - Code & logic resides in component class
+   - No two way binding
+   - Well suited for complex scenarios
+   - Dynamic form fields
+   - Custom Validation
+   - Dynamic Validation
+   - Unit testing
+
+   **Cons**
+
+   - Hard for beginners
+
+   ![Steps](./src/assets/form_reactive_steps.png)
